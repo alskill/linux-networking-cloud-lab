@@ -191,7 +191,7 @@ Check again:
 ```txt
 sudo ufw status numbered
 ```
-11. Default Firewall Policies
+## 11. Default Firewall Policies
 
 A common server configuration is:
 
@@ -205,7 +205,7 @@ sudo ufw default allow outgoing
 ```
 Important: Make sure required ports such as SSH are allowed before enabling these policies on a remote server.
 
-12. Enable UFW
+## 12. Enable UFW
 
 First make sure SSH is allowed:
 ```txt
@@ -292,7 +292,125 @@ For processes:
 sudo ss -tulpn
 ```
 Example:
-
+```txt
 LISTEN 0 511 0.0.0.0:80
-
+```
 This means a service is listening on port 80.
+
+Both can work together.
+
+Example:
+
+Internet
+   |
+   v
+AWS Security Group
+   |
+   | Allow TCP 22
+   | Allow TCP 80
+   v
+Ubuntu EC2
+   |
+   v
+UFW
+   |
+   | Allow TCP 22
+   | Allow TCP 80
+   v
+Services
+
+## 18. AWS Security Group vs UFW
+
+For traffic to reach the service, both layers must allow it.
+
+## 19. Example EC2 Firewall Configuration
+
+For this lab:
+
+SSH
+
+Port:
+```txt
+22
+```
+Purpose:
+
+Remote server administration
+HTTP
+
+Port:
+```txt
+80
+```
+Purpose:
+
+Nginx web traffic
+
+Recommended setup:
+
+AWS Security Group
+------------------
+```txt
+SSH 22  -> Your IP
+HTTP 80 -> 0.0.0.0/0
+```
+UFW
+------------------
+```txt
+22/tcp -> ALLOW
+80/tcp -> ALLOW
+```
+## 20. Firewall Troubleshooting
+Problem: SSH connection fails
+
+Check AWS Security Group:
+```txt
+TCP 22 -> Your IP
+```
+Check UFW:
+```txt
+sudo ufw status
+```
+Make sure SSH is allowed:
+```txt
+sudo ufw allow OpenSSH
+```
+Problem: Nginx is not accessible
+
+Check Nginx:
+```txt
+sudo systemctl status nginx
+```
+Check port 80:
+```txt
+sudo ss -tuln | grep :80
+```
+Check UFW:
+```txt
+sudo ufw status
+```
+Allow HTTP:
+```txt
+sudo ufw allow 80/tcp
+```    
+Also check the AWS Security Group:
+
+TCP 80 -> Allowed
+Problem: UFW is blocking traffic
+
+Check:
+```txt
+sudo ufw status verbose
+```
+Check numbered rules:
+```txt
+sudo ufw status numbered
+```
+Add the required rule:
+```txt
+sudo ufw allow 80/tcp
+```
+Reload:
+```txt
+sudo ufw reload
+```
