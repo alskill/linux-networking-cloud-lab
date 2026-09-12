@@ -443,3 +443,28 @@ Step 7: Test local HTTP
 ```txt
 curl -I http://localhost
 ```
+## 23. Key Takeaways
+- A firewall controls network traffic.
+- Inbound traffic comes into the server.
+- Outbound traffic leaves the server.
+- UFW is a simple Linux firewall management tool.
+- AWS Security Groups are separate from UFW.
+- SSH normally uses port 22.
+- HTTP normally uses port 80.
+- HTTPS normally uses port 443.
+- Always allow SSH before enabling UFW on a remote EC2 server.
+- For better security, restrict SSH to your trusted IP.
+- Both AWS Security Groups and UFW can protect an EC2 server.
+## Conclusion
+
+In this section, we learned how firewalls control network traffic and how to configure UFW on Linux.
+
+We also learned the difference between:
+
+AWS Security Group
+        +
+      UFW
+        =
+Multiple layers of network protection
+
+This prepares us for the next section where we create and configure an AWS EC2 Linux server.
