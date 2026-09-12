@@ -44,11 +44,11 @@ Your Laptop ---> EC2 Server
              SSH : 22
 
 ```             
-3. Types of Firewalls
+## 3. Types of Firewalls
 
 In this lab, we work with two firewall layers:
 
-1. AWS Security Group
+## 1. AWS Security Group
 
 AWS Security Group controls network traffic to and from an EC2 instance.
 
@@ -64,9 +64,9 @@ AWS Security Group
    v
    EC2        
 ```
-2. UFW
+## 2. UFW
 
-UFW = Uncomplicated Firewall
+## UFW = Uncomplicated Firewall
 
 UFW is a simple firewall management tool commonly used on Ubuntu.
 
