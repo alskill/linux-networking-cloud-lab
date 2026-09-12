@@ -323,6 +323,40 @@ Services
 
 For traffic to reach the service, both layers must allow it.
 
+| Feature | AWS Security Group | UFW |
+|---|---|---|
+| Location | AWS infrastructure | Linux server |
+| Applies to | EC2 network interface | Linux host |
+| Controls | Network traffic | Host traffic |
+| Managed through | AWS Console, CLI, Terraform | Linux commands |
+| Example | Allow TCP 22 | Allow TCP 22 |
+| Layer | Cloud/network level | Operating-system level |
+| Purpose | Controls traffic to/from EC2 | Controls traffic on the Linux server |
+
+### How They Work Together
+
+Both firewalls can work together to provide multiple layers of protection.
+
+```text
+Internet
+   |
+   v
+AWS Security Group
+   |
+   | Allow TCP 22
+   | Allow TCP 80
+   v
+Ubuntu EC2
+   |
+   v
+UFW
+   |
+   | Allow TCP 22
+   | Allow TCP 80
+   v
+Application / Nginx
+```
+
 ## 19. Example EC2 Firewall Configuration
 
 For this lab:
