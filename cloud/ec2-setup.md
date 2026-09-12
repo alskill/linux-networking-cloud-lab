@@ -400,3 +400,192 @@ Check DNS configuration:
 ```txt
 cat /etc/resolv.conf
 ```
+## 22. Check the EC2 Metadata
+
+EC2 instances can access instance metadata.
+
+For IMDSv2, obtain a metadata token:
+```txt
+TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+```
+Check the instance ID:
+```txt
+curl -H "X-aws-ec2-metadata-token: $TOKEN" \
+  http://169.254.169.254/latest/meta-data/instance-id
+```
+Check the private IP:
+```txt
+curl -H "X-aws-ec2-metadata-token: $TOKEN" \
+  http://169.254.169.254/latest/meta-data/local-ipv4
+```
+Check the instance hostname:
+```txt
+curl -H "X-aws-ec2-metadata-token: $TOKEN" \
+  http://169.254.169.254/latest/meta-data/hostname
+```
+## 23. Check Running Services
+
+Check SSH:
+```txt
+sudo systemctl status ssh
+```
+Check all failed services:
+```txt
+systemctl --failed
+```
+Check running services:
+```txt
+systemctl list-units --type=service --state=running
+```
+## 24. Basic EC2 Troubleshooting
+SSH Connection Refused
+
+Check:
+```txt
+Security Group
+    |
+    +-- TCP 22 allowed?
+    |
+    +-- Source IP correct?
+```
+Check the EC2 instance state:
+```txt
+Running
+```
+Check that the correct public IP is being used.
+```txt
+SSH Timeout
+```
+Possible causes:
+
+- EC2 instance is not running
+- Security Group does not allow port 22
+- Wrong public IP
+- Network configuration problem
+- Local network restrictions
+
+Check:
+```txt
+ssh -i "linux-lab-key.pem" ubuntu@<PUBLIC-IP>
+```
+Permission Denied for Key
+
+Set the key permissions:
+```txt
+chmod 400 linux-lab-key.pem
+```
+Then try again:
+```txt
+ssh -i "linux-lab-key.pem" ubuntu@<PUBLIC-IP>
+```
+Cannot Access the Internet
+
+Check the route:
+```txt
+ip route
+```
+Check DNS:
+```txt
+nslookup google.com
+```
+Test connectivity:
+```txt
+ping -c 4 8.8.8.8
+```
+## 25. EC2 Architecture
+```txt
+
+The basic architecture for this lab is:
+                    Internet
+                       |
+                       v
+              AWS Security Group
+                  |           |
+                SSH 22      HTTP 80
+                  |           |
+                  v           v
+              +-------------------+
+              |    Ubuntu EC2     |
+              |                   |
+              |       UFW         |
+              |         |         |
+              |       Nginx       |
+              +-------------------+
+
+```
+
+## 26. EC2 Security Best Practices
+
+Follow these practices:
+
+- Use SSH keys instead of passwords.
+- Restrict SSH access to your trusted IP where possible.
+- Do not expose private keys.
+- Never upload .pem files to GitHub.
+- Use Security Groups carefully.
+- Keep the operating system updated.
+- Use UFW or another host firewall where appropriate.
+- Stop or terminate unused EC2 instances.
+- Remove unused EBS volumes and Elastic IPs when they are no longer needed.
+- Monitor AWS costs.
+## 27. Stop vs Terminate
+Stop
+
+Stopping an EC2 instance shuts down the compute instance but keeps the instance configuration and attached EBS storage.
+
+Some resources can still incur charges.
+
+Terminate
+
+Terminating an EC2 instance permanently deletes the instance.
+
+The root EBS volume is commonly deleted on termination when its Delete on termination setting is enabled.
+
+Always verify the storage configuration before terminating.
+
+## 28. Lab Cleanup
+
+When the lab is complete, terminate the EC2 instance if you no longer need it.
+
+Before terminating, check:
+
+- EC2 instance
+- EBS volumes
+- Elastic IPs
+- Snapshots
+- Load balancers
+- NAT Gateways
+- Other AWS resources
+
+In the AWS Console:
+```txt
+EC2
+  |
+  v
+Instances
+  |
+  v
+Select instance
+  |
+  v
+Instance state
+  |
+  v
+Terminate instance
+```
+## 29. Important Cost Warning
+
+EC2 is only one possible source of AWS charges.
+
+Other resources can also generate costs, such as:
+
+- EBS storage
+- Elastic IP addresses
+- NAT Gateways
+- Load Balancers
+- Snapshots
+- Data transfer
+- Other AWS services
+
+After completing the lab, verify that unnecessary resources have been removed.       
