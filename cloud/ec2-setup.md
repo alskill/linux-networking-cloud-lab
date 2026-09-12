@@ -530,13 +530,13 @@ Follow these practices:
 - Remove unused EBS volumes and Elastic IPs when they are no longer needed.
 - Monitor AWS costs.
 ## 27. Stop vs Terminate
-Stop
+### Stop
 
 Stopping an EC2 instance shuts down the compute instance but keeps the instance configuration and attached EBS storage.
 
 Some resources can still incur charges.
 
-Terminate
+### Terminate
 
 Terminating an EC2 instance permanently deletes the instance.
 
