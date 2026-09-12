@@ -32,6 +32,7 @@ Firewall
    +---- Block unwanted traffic
 
    ## 2. Inbound and Outbound Traffic
+   ```
 
 ### Inbound Traffic
 
@@ -42,6 +43,7 @@ Example:
 ```text
 Your Laptop ---> EC2 Server
              SSH : 22
+```             
 
 3. Types of Firewalls
 
