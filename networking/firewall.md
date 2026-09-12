@@ -30,9 +30,8 @@ Firewall
    +---- Allow HTTP : 80
    |
    +---- Block unwanted traffic
-
+```
    ## 2. Inbound and Outbound Traffic
-   ```
 
 ### Inbound Traffic
 
@@ -43,8 +42,8 @@ Example:
 ```text
 Your Laptop ---> EC2 Server
              SSH : 22
-```             
 
+```             
 3. Types of Firewalls
 
 In this lab, we work with two firewall layers:
@@ -56,6 +55,7 @@ AWS Security Group controls network traffic to and from an EC2 instance.
 It works at the AWS infrastructure level.
 
 Example:
+```text
 Internet
    |
    v
@@ -63,7 +63,7 @@ AWS Security Group
    |
    v
    EC2        
-
+```
 2. UFW
 
 UFW = Uncomplicated Firewall
