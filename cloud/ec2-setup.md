@@ -589,3 +589,40 @@ Other resources can also generate costs, such as:
 - Other AWS services
 
 After completing the lab, verify that unnecessary resources have been removed.       
+## 30. Key Takeaways
+- EC2 provides virtual servers in AWS.
+- An AMI provides the operating system image.
+- Instance type determines CPU and memory resources.
+- Key pairs are used for secure SSH authentication.
+- Security Groups control network traffic to and from EC2.
+- EBS provides persistent block storage.
+- A public IP can be used for internet communication.
+- A private IP is used for communication inside the VPC.
+- SSH commonly uses port 22.
+- Ubuntu commonly uses the ubuntu user for SSH.
+- Always protect your private key.
+- Always clean up unused AWS resources to avoid unnecessary charges.
+## Conclusion
+
+In this section, we created and configured an AWS EC2 Linux server.
+
+We learned how to:
+```txt
+Create EC2
+    ↓
+Choose Ubuntu
+    ↓
+Configure Key Pair
+    ↓
+Configure Security Group
+    ↓
+Launch Instance
+    ↓
+Connect using SSH
+    ↓
+Check Linux System
+    ↓
+Test Networking
+    ↓
+Update Server
+```
