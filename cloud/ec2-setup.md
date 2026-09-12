@@ -260,8 +260,8 @@ VPC ID
 Example:
 
 Instance state: Running
-Public IPv4: 203.0.113.10
-Private IPv4: 10.0.1.10
+- Public IPv4: 203.0.113.10
+- Private IPv4: 10.0.1.10
 
 The IP addresses above are examples only.
 
