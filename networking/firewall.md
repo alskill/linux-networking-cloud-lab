@@ -84,8 +84,9 @@ AWS Security Group
         |
         v
      Nginx
-     ```
-     ## 4. Check UFW Status
+```
+
+## 4. Check UFW Status
 
 Check whether UFW is active:
 ```text
