@@ -241,3 +241,58 @@ Check:
 ```txt
 sudo ufw status
 ```
+## 14. Reload UFW
+
+After changing rules:
+```txt
+sudo ufw reload
+```
+Check:
+```txt
+sudo ufw status verbose
+```
+## 15. Reset UFW
+
+To remove UFW rules and return to the default configuration:
+```txt
+sudo ufw reset
+```
+Warning: This removes existing UFW rules.
+
+Do not use this on a production server without understanding the impact.
+
+## 16. UFW and Nginx
+
+If Nginx is running on port 80, UFW must allow port 80.
+
+Check Nginx listening ports:
+```txt
+sudo ss -tuln
+```
+Allow HTTP:
+```txt
+sudo ufw allow 80/tcp
+```
+Test locally:
+```rxt
+curl -I http://localhost
+```
+Expected response:
+```txt
+HTTP/1.1 200 OK
+```
+## 17. Check Listening Ports
+
+Use:
+```txt
+sudo ss -tuln
+```
+For processes:
+```txt
+sudo ss -tulpn
+```
+Example:
+
+LISTEN 0 511 0.0.0.0:80
+
+This means a service is listening on port 80.
