@@ -293,3 +293,110 @@ Then connect:
 ```txt
 ssh -i "linux-lab-key.pem" ubuntu@<PUBLIC-IP>
 ```
+## 16. Verify the Connection
+
+After connecting, check the current user:
+```txt
+whoami
+```
+Expected:
+```txt
+ubuntu
+```
+Check the hostname:
+```txt
+hostname
+```
+Check the operating system:
+```txt
+cat /etc/os-release
+```
+Check the kernel:
+```txt
+uname -a
+```
+## 17. Check System Resources
+
+Check CPU and memory:
+```txt
+free -h
+````
+Check disk usage:
+```txt
+df -h
+```
+Check system uptime:
+```txt
+uptime
+```
+Check CPU information:
+```txt
+lscpu
+```
+## 18. Update the Ubuntu Server
+
+After connecting to the server, update the package list:
+```txt
+sudo apt update
+```
+Upgrade installed packages:
+```txt
+sudo apt upgrade -y
+```
+Check whether packages need updates:
+```txt
+sudo apt list --upgradable
+```
+## 19. Install Basic Networking Tools
+
+You can install useful networking tools for the lab.
+```txt
+sudo apt install -y curl wget net-tools dnsutils
+```
+Verify:
+```txt
+curl --version
+```
+```txt
+nslookup google.com
+```
+Check network interfaces:
+```txt
+ip addr
+```
+Check routing:
+```txt
+ip route
+```
+## 20. Test Internet Connectivity
+
+Test connectivity to a public IP:
+```txt
+ping -c 4 8.8.8.8
+```
+Test DNS resolution:
+```txt
+ping -c 4 google.com
+```
+Test HTTP connectivity:
+```txt
+curl -I https://example.com
+```
+## 21. Check Network Information
+
+Check IP addresses:
+```txt
+ip addr
+```
+Check routes:
+```txt
+ip route
+```
+Check listening ports:
+```txt
+sudo ss -tuln
+```
+Check DNS configuration:
+```txt
+cat /etc/resolv.conf
+```
