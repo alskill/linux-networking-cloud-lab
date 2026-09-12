@@ -266,7 +266,7 @@ You may see:
 ```txt
 index.nginx-debian.html
 ```
-18. Create a Simple Custom Web Page
+## 18. Create a Simple Custom Web Page
 
 You can replace the default page with a simple HTML page.
 
@@ -297,7 +297,9 @@ Save the file.
 In Nano:
 ```txt
 CTRL + O
+```
 ENTER
+```txt
 CTRL + X
 ```
 ## 19. Test the Custom Website
@@ -342,11 +344,13 @@ sudo nginx -t
 Successful output should contain:
 
 syntax is ok
+
 test is successful
 
 Then reload:
-
+```txt
 sudo systemctl reload nginx
+```
 ## 22. Check Nginx Logs
 
 Nginx logs are useful for troubleshooting.
