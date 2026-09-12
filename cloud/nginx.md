@@ -229,8 +229,6 @@ http://13.234.XX.XX
 You should see the default Nginx welcome page.
 ## 15. Allow HTTP Port 80 in AWS Security Group
 
-## 15. Allow HTTP Port 80 in AWS Security Group
-
 If the browser cannot access your Nginx website, check the **AWS Security Group** attached to your EC2 instance.
 
 The Security Group should allow HTTP traffic on port `80`.
@@ -420,6 +418,19 @@ CTRL + C
 to stop.
 
 ## 24. Common Nginx Commands
+
+| Command | Purpose |
+|---|---|
+| `sudo systemctl start nginx` | Start Nginx |
+| `sudo systemctl stop nginx` | Stop Nginx |
+| `sudo systemctl restart nginx` | Restart Nginx |
+| `sudo systemctl reload nginx` | Reload configuration |
+| `sudo systemctl status nginx` | Check status |
+| `sudo systemctl enable nginx` | Start Nginx at boot |
+| `nginx -v` | Check Nginx version |
+| `sudo nginx -t` | Test Nginx configuration |
+| `sudo ss -tuln` | Check listening ports |
+| `curl http://localhost` | Test Nginx locally |
 
 ## 25. Nginx Troubleshooting
 ### Problem 1: Nginx is not running
