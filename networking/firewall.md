@@ -443,6 +443,28 @@ Step 7: Test local HTTP
 ```txt
 curl -I http://localhost
 ```
+## 22. Useful UFW Commands
+
+## 22. Useful UFW Commands
+
+| Command | Purpose |
+|---|---|
+| `sudo ufw status` | Check UFW status |
+| `sudo ufw status verbose` | Show detailed firewall status |
+| `sudo ufw status numbered` | Show numbered firewall rules |
+| `sudo ufw allow 22/tcp` | Allow SSH traffic |
+| `sudo ufw allow 80/tcp` | Allow HTTP traffic |
+| `sudo ufw allow 443/tcp` | Allow HTTPS traffic |
+| `sudo ufw allow OpenSSH` | Allow SSH |
+| `sudo ufw deny 23/tcp` | Block port 23 |
+| `sudo ufw delete <number>` | Delete a firewall rule |
+| `sudo ufw enable` | Enable UFW |
+| `sudo ufw disable` | Disable UFW |
+| `sudo ufw reload` | Reload UFW rules |
+| `sudo ufw reset` | Reset UFW rules |
+| `sudo ufw default deny incoming` | Deny incoming traffic by default |
+| `sudo ufw default allow outgoing` | Allow outgoing traffic by default |
+
 ## 23. Key Takeaways
 - A firewall controls network traffic.
 - Inbound traffic comes into the server.
