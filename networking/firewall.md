@@ -414,3 +414,32 @@ Reload:
 ```txt
 sudo ufw reload
 ```
+## 21. Practice
+Step 1: Check UFW
+```txt
+sudo ufw status verbose
+```
+Step 2: Allow SSH
+```txt
+sudo ufw allow OpenSSH
+```
+Step 3: Allow HTTP
+```txt
+sudo ufw allow 80/tcp
+```
+Step 4: Enable UFW
+```txt
+sudo ufw enable
+```
+Step 5: Verify
+```txt
+sudo ufw status numbered
+```
+Step 6: Check listening ports
+```txt
+sudo ss -tuln
+```
+Step 7: Test local HTTP
+```txt
+curl -I http://localhost
+```
