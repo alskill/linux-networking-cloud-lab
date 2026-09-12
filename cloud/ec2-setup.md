@@ -54,6 +54,20 @@ Your Computer
 
 Important EC2 components include:
 
+| Component | Purpose |
+|---|---|
+| AMI | Operating system image |
+| Instance Type | CPU and memory configuration |
+| Key Pair | Secure SSH authentication |
+| Security Group | Controls network traffic |
+| EBS | Storage for the EC2 instance |
+| Public IP | Allows internet communication |
+| Private IP | Communication inside the VPC |
+| VPC | AWS virtual network |
+| Subnet | Network segment inside the VPC |
+
+Important EC2 components include:
+
 ## 3. Choose an AWS Region
 
 AWS has different geographical regions.
