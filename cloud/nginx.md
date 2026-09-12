@@ -504,8 +504,9 @@ Check the error log:
 sudo tail -n 50 /var/log/nginx/error.log
 ```
 Check the access log:
-
+```txt
 sudo tail -n 50 /var/log/nginx/access.log
+```
 ## 26. Nginx Architecture
 ```txt
 Basic architecture:
