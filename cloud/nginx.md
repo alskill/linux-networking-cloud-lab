@@ -229,7 +229,34 @@ http://13.234.XX.XX
 You should see the default Nginx welcome page.
 ## 15. Allow HTTP Port 80 in AWS Security Group
 
-If the browser cannot access Nginx, check the EC2 Security Group.
+## 15. Allow HTTP Port 80 in AWS Security Group
+
+If the browser cannot access your Nginx website, check the **AWS Security Group** attached to your EC2 instance.
+
+The Security Group should allow HTTP traffic on port `80`.
+
+### Required Rule
+
+| Type | Protocol | Port | Source |
+|---|---|---:|---|
+| HTTP | TCP | 80 | 0.0.0.0/0 |
+
+### Steps
+
+1. Open the **AWS EC2 Console**.
+2. Select your EC2 instance.
+3. Go to the **Security** tab.
+4. Click the attached **Security Group**.
+5. Select **Inbound rules**.
+6. Click **Edit inbound rules**.
+7. Add the following rule:
+
+```text
+Type: HTTP
+Protocol: TCP
+Port: 80
+Source: 0.0.0.0/0
+```
 
 The Security Group should allow:
 Important:
