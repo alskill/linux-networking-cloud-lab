@@ -161,4 +161,33 @@ Replace the example IP with your actual trusted public IP.
 
 This is safer than allowing SSH from everyone.
 
+9. Deny a Port
 
+Example: block Telnet port 23.
+```text
+sudo ufw deny 23/tcp    
+```
+Check:
+```text
+sudo ufw status
+```
+## 10. Delete a Firewall Rule
+
+List numbered rules:
+```txt
+sudo ufw status numbered
+```
+Example:
+```txt
+[ 1] 22/tcp ALLOW
+[ 2] 80/tcp ALLOW
+[ 3] 23/tcp DENY
+```
+Delete rule number 3:
+```txt
+sudo ufw delete 3
+```
+Check again:
+```txt
+sudo ufw status numbered
+```
