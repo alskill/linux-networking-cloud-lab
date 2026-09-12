@@ -191,3 +191,53 @@ Check again:
 ```txt
 sudo ufw status numbered
 ```
+11. Default Firewall Policies
+
+A common server configuration is:
+
+Deny incoming traffic by default
+Allow outgoing traffic by default
+
+Commands:
+```txt
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+Important: Make sure required ports such as SSH are allowed before enabling these policies on a remote server.
+
+12. Enable UFW
+
+First make sure SSH is allowed:
+```txt
+sudo ufw allow OpenSSH
+```
+Allow HTTP if using Nginx:
+```txt
+sudo ufw allow 80/tcp
+```
+Then enable UFW:
+```txt
+sudo ufw enable
+```
+Confirm:
+```txt
+sudo ufw status verbose
+```
+Example:
+```txt
+Status: active
+```
+```txt
+22/tcp    ALLOW
+80/tcp    ALLOW
+```
+## 13. Disable UFW
+
+To temporarily disable UFW:
+```txt
+sudo ufw disable
+```
+Check:
+```txt
+sudo ufw status
+```
