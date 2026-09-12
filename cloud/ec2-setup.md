@@ -164,3 +164,132 @@ Example:
 ```txt
 *.pem
 ```
+## 9. Configure Network Settings
+
+EC2 networking includes:
+```txt
+VPC
+Subnet
+Public IP
+Security Group
+```
+For a basic lab, use the default VPC and a suitable public subnet if available.
+
+Make sure the instance can receive SSH traffic from your trusted IP.
+
+## 10. Configure Security Group
+
+Create or select a Security Group.
+
+For this lab, allow:
+```bash
+SSH
+Port: 22
+Source: My IP
+```
+Later, when Nginx is installed, allow:
+```exe
+HTTP
+Port: 80
+Source: Anywhere IPv4
+```
+Recommended setup:
+```txt
+SSH  : TCP 22  -> Your IP
+HTTP : TCP 80  -> 0.0.0.0/0
+```
+Avoid opening SSH to:
+```txt
+0.0.0.0/0
+```
+unless there is a specific reason and appropriate security controls.
+
+## 11. Configure Storage
+
+EC2 uses EBS volumes for persistent block storage.
+
+For a small Linux learning lab, the default root volume is usually sufficient.
+
+Example:
+```txt
+Root volume
+Type: gp3
+Size: 8 GiB
+```
+The exact available minimum and default can vary by AMI and AWS configuration.
+
+## 12. Launch the Instance
+
+Review the configuration.
+
+Check:
+```txt
+Instance name
+AMI
+Instance type
+Key pair
+VPC
+Subnet
+Security Group
+Storage
+```
+Then click:
+```txt
+Launch instance
+```
+Wait for the instance state to become:
+
+Running
+
+## 13. Find the Instance Details
+
+Select the EC2 instance.
+
+Important information includes:
+```txt
+Instance ID
+Instance state
+Public IPv4 address
+Private IPv4 address
+Public IPv4 DNS
+Availability Zone
+Security Group
+Subnet ID
+VPC ID
+```
+Example:
+
+Instance state: Running
+Public IPv4: 203.0.113.10
+Private IPv4: 10.0.1.10
+
+The IP addresses above are examples only.
+
+## 14. Connect to the EC2 Instance
+
+For Ubuntu, the default SSH username is commonly:
+
+ubuntu
+
+Example SSH command:
+```txt
+ssh -i "linux-lab-key.pem" ubuntu@<PUBLIC-IP>
+```
+Example:
+```txt
+ssh -i "linux-lab-key.pem" ubuntu@203.0.113.10
+```
+Replace the example IP with the public IPv4 address of your EC2 instance.
+
+## 15. Set Private Key Permissions
+
+On Linux or Git Bash, SSH may require the private key to have restricted permissions.
+
+Example:
+```txt
+chmod 400 linux-lab-key.pem
+```
+Then connect:
+```txt
+ssh -i "linux-lab-key.pem" ubuntu@<PUBLIC-IP>
+```
