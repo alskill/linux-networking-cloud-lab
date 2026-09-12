@@ -109,3 +109,56 @@ If you are connected to a remote EC2 server through SSH, make sure SSH is allowe
 Otherwise, you may lock yourself out of the server.
 
 Allow SSH:
+```text
+sudo ufw allow 22/tcp
+
+```
+Or use the application name:
+```text
+sudo ufw allow OpenSSH
+```
+Then check:
+```text
+sudo ufw status
+```
+
+## 6. Allow HTTP
+
+Nginx normally uses port 80 for HTTP.
+
+Allow HTTP:
+```text
+sudo ufw allow 80/tcp
+```
+Check the rule:
+```text 
+sudo ufw status
+```
+Expected:
+```text
+22/tcp    ALLOW
+80/tcp    ALLOW
+```
+7. Allow HTTPS
+
+HTTPS normally uses port 443.
+```text
+sudo ufw allow 443/tcp
+```
+8. Allow SSH Only From a Specific IP
+
+For better security, SSH can be restricted to a trusted IP address.
+
+Example:
+```text
+sudo ufw allow from <YOUR-IP> to any port 22 proto tcp
+```
+Example:
+```text
+sudo ufw allow from 203.0.113.10 to any port 22 proto tcp
+```
+Replace the example IP with your actual trusted public IP.
+
+This is safer than allowing SSH from everyone.
+
+
