@@ -73,3 +73,38 @@ UFW is a simple firewall management tool commonly used on Ubuntu.
 It controls traffic at the Linux host level.
 
 Example:     
+```text
+AWS Security Group
+        |
+        v
+      Ubuntu
+        |
+        v
+       UFW
+        |
+        v
+     Nginx
+     ```
+     ## 4. Check UFW Status
+
+Check whether UFW is active:
+```text
+sudo ufw status
+```
+For more details:
+```text
+sudo ufw status verbose
+``` 
+Example:
+```text
+Status: inactive
+```
+UFW may be disabled by default.
+-----------
+## 5. Important SSH Warning
+
+If you are connected to a remote EC2 server through SSH, make sure SSH is allowed before enabling UFW.
+
+Otherwise, you may lock yourself out of the server.
+
+Allow SSH:
